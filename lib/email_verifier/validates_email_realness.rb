@@ -13,9 +13,9 @@ ActiveSupport.on_load(:active_record) do
             rescue EmailVerifier::NoMailServerException
               record.errors.add attribute, I18n.t('errors.messages.email_verifier.no_mail_server')
             rescue EmailVerifier::FailureException
-              flash[:warning] = I18n.t('errors.messages.email_verifier.failure')
-        	  rescue Exception
-              flash[:warning] = I18n.t('errors.messages.email_verifier.exception')
+              #Should not force an record error
+            rescue Exception
+              #Should not force an record error
             end
           end
         end
